@@ -27,7 +27,6 @@ class Contenedor {
             await fileContent.push(obj);
             await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
             return `your new element is saved under the id : ${obj.id}`;
-
         } catch (error) {
             console.log(error);
         }
@@ -42,8 +41,6 @@ class Contenedor {
             } else {
                 return 0
             }
-           
-
         } catch (error) {
             console.log(error);
         }
