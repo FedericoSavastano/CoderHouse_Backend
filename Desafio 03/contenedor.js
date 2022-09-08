@@ -122,22 +122,15 @@ const productList = [
    const fileRoute = "./productos.txt"
    const myFile = new Contenedor(fileRoute);
 
-//    const loadProducts = async () => {
-   
-//     try{
-//         for(let i = 0; i< productList.length; i++) {
-//             await myFile.save(productList[i]).then(console.log);
-//             console.log("creando el ", i) }
-//     } catch(err) {
-//         console.log(err)
-//     }
-           
 
-//    }
 
    async function loadProducts () {
-    for (const product of productList) {
-        await myFile.save(product);
+    try{
+        for (const product of productList) {
+            await myFile.save(product);
+        }
+    } catch(err) {
+        console.log(err)
     }
   }
    
@@ -146,11 +139,7 @@ const productList = [
     
     export {loadProducts, fileRoute}
 
-// const loadProds = async () => {
-//     productList.forEach(element => {
-//         await myFile.save(productList[i]).then(console.log)
-//     })
-// }
+ 
 
 
 
