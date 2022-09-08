@@ -1,0 +1,24 @@
+{
+  "name": "coderhouse_backend",
+  "version": "1.0.0",
+  "description": "Desafios del curso de backend de CoderHouse",
+  "main": "practica_clase5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FedericoSavastano/CoderHouse_Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FedericoSavastano/CoderHouse_Backend/issues"
+  },
+  "homepage": "https://github.com/FedericoSavastano/CoderHouse_Backend#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "moment": "^2.29.4"
+  }
+}
