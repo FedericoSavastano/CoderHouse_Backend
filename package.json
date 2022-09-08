@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Desafios del curso de backend de CoderHouse",
   "main": "practica_clase5.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
