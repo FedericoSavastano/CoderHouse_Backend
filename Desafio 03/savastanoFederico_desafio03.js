@@ -1,17 +1,17 @@
-const express = require ('express');
-const fs = require("fs");
+import {loadProducts,  fileRoute} from './contenedor.js';
+
+import fs  from 'fs';
+import express from 'express';
 const app = express();
 
-const fileRoute = "./productos.txt";
 
-const readFile = (fileRoute) => {
-    let fileContent = fs.readFileSync(fileRoute, 'utf-8') ;
-    let fileContentParsed = JSON.parse(fileContent);
-    return fileContentParsed;
+let fileContent;
+async function getProductContent() {
+    await loadProducts();
+    fileContent = JSON.parse(await fs.promises.readFile(fileRoute, 'utf-8'))
 }
 
-let fileContent = readFile(fileRoute);
-
+await getProductContent();
 
 app.get('/productos', (req, res) =>{
     res.send(fileContent)
@@ -28,3 +28,11 @@ const server = app.listen(PORT, ()=>{
     console.log(`Listening on port ${server.address().port}`);
 })
 server.on('error', (err)=> console.log(err));
+
+
+
+
+
+
+
+
