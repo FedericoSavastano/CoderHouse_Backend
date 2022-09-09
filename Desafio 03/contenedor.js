@@ -135,9 +135,9 @@ const productList = [
   }
    
   
-    //  loadProducts();
+    // loadProducts();
     
-    export {loadProducts, fileRoute}
+    export {Contenedor, fileRoute, loadProducts}
 
  
 

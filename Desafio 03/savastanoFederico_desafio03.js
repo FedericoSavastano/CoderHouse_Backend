@@ -1,25 +1,19 @@
-import {loadProducts,  fileRoute} from './contenedor.js';
-
-import fs  from 'fs';
+import {Contenedor,  fileRoute, loadProducts} from './contenedor.js';
 import express from 'express';
+
 const app = express();
+let fileContent = new Contenedor(fileRoute);
 
-
-let fileContent;
-async function getProductContent() {
-    await loadProducts();
-    fileContent = JSON.parse(await fs.promises.readFile(fileRoute, 'utf-8'))
-}
-
-await getProductContent();
 
 app.get('/productos', (req, res) =>{
-    res.send(fileContent)
+    fileContent.getAll().then(products =>res.send(products))
 });
 
 app.get('/productoRandom', (req, res) =>{
-    let randomNumber = Math.floor(Math.random() * fileContent.length);
-    res.send(fileContent[randomNumber])
+    fileContent.getAll().then(products =>{
+        let randomNumber = Math.floor(Math.random() * products.length);
+        fileContent.getById(randomNumber).then(product =>res.send(product))
+    })
 });
 
 
