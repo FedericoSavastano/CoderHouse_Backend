@@ -1,4 +1,4 @@
-import {Contenedor,  fileRoute, loadProducts} from './contenedor.js';
+import {Contenedor,  fileRoute} from './contenedor.js';
 import express from 'express';
 
 const app = express();
