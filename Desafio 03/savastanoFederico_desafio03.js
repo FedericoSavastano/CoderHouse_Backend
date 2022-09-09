@@ -11,7 +11,7 @@ app.get('/productos', (req, res) =>{
 
 app.get('/productoRandom', (req, res) =>{
     fileContent.getAll().then(products =>{
-        let randomNumber = Math.floor(Math.random() * products.length);
+        let randomNumber = Math.ceil(Math.random() * products.length);
         fileContent.getById(randomNumber).then(product =>res.send(product))
     })
 });
