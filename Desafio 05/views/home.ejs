@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS Version</title>
+    <!-- CSS only -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous' />
+</head>
+
+<body style="margin: 2.5% 10%;">
+
+    <h3>EJS Version</h3>
+    <h1>Save Product</h1>
+    <br>
+    <form action='/ejs/' method='post'>
+        <div class='form-group'>
+            <label for='title'>Title</label>
+            <input type='text' name='title' id='title' class='form-control' />
+        </div>
+        <div class='form-group'>
+            <label for='price'>Price</label>
+            <input type='number' name='price' id='price' class='form-control' />
+        </div>
+        <div class='form-group'>
+            <label for='thumbnail'>Thumbnail</label>
+            <input type='text' name='thumbnail' id='thumbnail' class='form-control' />
+        </div>
+        <br />
+        <button type='submit' class='btn btn-success'>Save</button>
+    </form>
+    <br>
+
+    <% if (newProductSaved) { %>
+        <p> New product saved! <%- title %> with the id of <%- id %>
+        </p>
+        <% } %>
+            <br>
+            <form action='/ejs/productos' method='get'>
+                <button type='submit' class='btn btn-info'>See Products</button>
+            </form>
+
+
+
+</body>
+
+</html>

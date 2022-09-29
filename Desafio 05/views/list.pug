@@ -1,0 +1,34 @@
+head
+  meta(charset='utf-8')
+  title Products Pug Version
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+  body(style={margin: '2.5% 10%'})
+    h3 Pug Version
+    h1 Products
+    br
+    
+    if productsExist
+      table.table
+        thread
+          tr
+            th(scope="col") Id 
+            th(scope="col") Title 
+            th(scope="col") Price 
+            th(scope="col") Thumbnail 
+        
+        tbody
+          each product in products
+            tr
+              th(scope="row")= product.id
+              td= product.title 
+              td= product.price 
+              td
+                img(src= product.thumbnail, alt="" border=1 height=48 width=48 )
+    
+    else 
+      p There are no products yet
+
+    br
+    form(role='form' method='GET' action='/pug/')
+        button.btn.btn-primary(type="submit") Back    

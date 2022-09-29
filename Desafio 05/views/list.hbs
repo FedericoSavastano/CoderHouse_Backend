@@ -1,0 +1,34 @@
+
+<h1>Products</h1>
+{{#if productsExist}}
+    <table class='table'>
+        <thead class='thead-dark'>
+            <tr>
+                <th scope='col'>ID</th>
+                <th scope='col'>Title</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Thumbnail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+                <tr>
+                    <th scope='row'>{{this.id}}</th>
+                    <td>{{this.title}}</td>
+                    <td>$ {{this.price}}</td>
+                    <td><img src={{this.thumbnail}} alt="" border=1 height=48 width=48></img></th>
+                </tr>
+
+            {{/each}}
+
+        </tbody>
+    </table>
+
+{{else}}
+    <p>There are no products yet</p>
+{{/if}}
+
+ 
+<form action="/hbs/" method="get">
+    <button type="submit" class='btn btn-primary'>Back</button>
+</form>

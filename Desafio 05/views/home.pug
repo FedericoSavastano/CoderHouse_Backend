@@ -1,0 +1,29 @@
+head
+  meta(charset='utf-8')
+  title Products Pug Version
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+  body(style={margin: '2.5% 10%'})
+    h3 Pug Version
+    h1 Save Product
+
+    form(role='form' method='POST' action='/pug/')
+        div.form-group
+        label(for='title') Title:
+        input.form-control(type='text', id='title' title='title' name='title')
+        div.form-group
+        label(for='price') Price:
+        input.form-control(type='text', id='price' title='price' name='price')
+        div.form-group
+        label(for='thumbnail') Thumbnail:
+        input.form-control(type='text', id='thumbnail' title='thumbnail' name='thumbnail')
+        br
+        button.btn.btn-success(type="submit") Save
+    
+        br
+
+        if newProductSaved
+          p= `New product saved ! ${title} with the id of ${id}`
+    
+    form(role='form' method='GET' action='/pug/productos')
+        button.btn.btn-info(type="submit") See Products

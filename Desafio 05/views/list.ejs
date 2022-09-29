@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS Version</title>
+    <!-- CSS only -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous' />
+</head>
+
+<body style="margin: 2.5% 10%;">
+    <h3>EJS Version</h3>
+    <h1>Products</h1>
+    <br>
+
+    <% if (productsExist) { %>
+        <table class='table'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th scope='col'>ID</th>
+                    <th scope='col'>Title</th>
+                    <th scope='col'>Price</th>
+                    <th scope='col'>Thumbnail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product){ %>
+
+                    <tr>
+                        <th scope='row'>
+                            <%- product.id %>
+                        </th>
+                        <td>
+                            <%- product.title%>
+                        </td>
+                        <td>
+                            <%- product.price%>
+                        </td>
+                        <td><img src=<%- product.thumbnail%> alt="" border=1 height=48 width=48></img></th>
+                    </tr>
+
+                    <% }); %>
+
+            </tbody>
+        </table>
+
+
+        <% } else{ %>
+            <p>There are no products yet</p>
+            <% } %>
+
+
+                <form action="/ejs/" method="get">
+                    <button type="submit" class='btn btn-primary'>Back</button>
+                </form>
+
+</body>
+
+</html>
