@@ -1,0 +1,41 @@
+<h1>Product List</h1>
+<% if (productsExist) { %>
+    <table class='table'>
+        <thead class='thead-dark'>
+            <tr>
+                <th scope='col'>ID</th>
+                <th scope='col'>Title</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Thumbnail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(function(product){ %>
+
+                <tr>
+                    <th scope='row'>
+                        <%- product.id %>
+                    </th>
+                    <td>
+                        <%- product.title%>
+                    </td>
+                    <td>
+                        <%- product.price%>
+                    </td>
+                    <td><img src=<%- product.thumbnail%> alt="" border=1 height=48 width=48></img></th>
+                </tr>
+
+                <% }); %>
+
+        </tbody>
+    </table>
+
+
+    <% } else{ %>
+        <p>There are no products yet</p>
+        <% } %>
+
+
+            <!-- <form action="/" method="get">
+                <button type="submit" class='btn btn-primary'>Back</button>
+            </form> -->

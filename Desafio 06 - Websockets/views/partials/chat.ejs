@@ -1,0 +1,27 @@
+<h1>Chat</h1>
+
+<!-- <br>
+<label for='name'>Name</label>
+<input type="text" name="name" id="name" class='form-control'>
+<br>
+<ul id="chat">
+
+</ul>
+<label for='msg'>Message</label>
+<input type="text" name="msg" id="msg" class='form-control'>
+<br>
+<button type='submit' class='btn btn-success'>Send</button>
+ -->
+
+
+<form onsubmit="return addMessage(this)">
+    <label for="author">Name</label>
+    <input type="text" name="author" id="author" placeholder="Enter name">
+    <br>
+    <label for="text">Message</label>
+    <input type="text" name="text" id="text" placeholder="Enter text">
+    <br>
+    <button type="submit">Enviar</button>
+</form>
+<br><br>
+<div id="messages"></div>
