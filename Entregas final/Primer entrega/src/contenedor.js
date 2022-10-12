@@ -13,7 +13,7 @@ class Contenedor {
                 let fileContentParsed = await JSON.parse(fileContent);
                 return fileContentParsed;
            } else {
-                fs.promises.writeFile(this.fileRoute, JSON.parse('[]', null, '\t'));
+                fs.promises.writeFile(this.fileRoute, JSON.stringify('[]', null, '\t'));
                 return [];
            }
         } catch (error) {
@@ -25,6 +25,7 @@ class Contenedor {
         try {
             let fileContent = await this.#readMyFile();
             obj.id = await this.#getLastId() + 1;
+            obj.timestamp = Date.now();
             await fileContent.push(obj);
             await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
             return `your new element is saved under the id : ${obj.id}`;
@@ -36,11 +37,11 @@ class Contenedor {
     async #getLastId() {
         try {
             let fileContent = await this.#readMyFile();
-            if(fileContent.length >= 1) {
-                let lastId = await fileContent.at(-1).id;
+            if(fileContent[0].id) {
+                let lastId = await fileContent.at(-1).id; 
                 return lastId;
             } else {
-                return 0;
+                return Number(0);
             }
         } catch (error) {
             console.log(error);
@@ -62,6 +63,31 @@ class Contenedor {
         try {
             let fileContent = await this.#readMyFile();
             return fileContent;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async editById(num, obj){
+        try {
+            let contentSelected;
+            let fileContent = await this.#readMyFile();
+            await fileContent.forEach(content => {if(content.id === num) contentSelected = content});
+             if (contentSelected) {
+                let indexOfProductSelected = fileContent.indexOf(contentSelected);
+             
+                for (const property in obj){
+                    if(fileContent[indexOfProductSelected].hasOwnProperty(property))
+                    {
+                        fileContent[indexOfProductSelected][property] =  obj[property]
+                    }
+                }
+
+                await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
+                return `you edited the element under the id : ${num}`;
+            } else {
+                return `the element with id : ${num} could not be edited because it was not in the file`;
+            }
         } catch (error) {
             console.log(error);
         }
@@ -135,7 +161,7 @@ const productList = [
   }
    
   
-     loadProducts();
+    // loadProducts();
     
     export {Contenedor, fileRoute, loadProducts}
 

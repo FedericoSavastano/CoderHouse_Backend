@@ -3,108 +3,36 @@
 		"title": "Escuadra",
 		"price": 123.45,
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+		"id": null
+	},
+	{
+		"title": "Calculadora",
+		"price": 234.56,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
 		"id": 1
 	},
 	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+		"title": "Globo Terráqueo",
+		"price": 345.67,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
 		"id": 2
 	},
 	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+		"title": "Escuadra",
+		"price": 123.45,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
 		"id": 3
 	},
 	{
-		"title": "Escuadra",
-		"price": 123.45,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+		"title": "Calculadora",
+		"price": 234.56,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
 		"id": 4
 	},
 	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+		"title": "Globo Terráqueo",
+		"price": 345.67,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
 		"id": 5
-	},
-	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-		"id": 6
-	},
-	{
-		"title": "Escuadra",
-		"price": 123.45,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-		"id": 7
-	},
-	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-		"id": 8
-	},
-	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-		"id": 9
-	},
-	{
-		"title": "Escuadra",
-		"price": 123.45,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-		"id": 10
-	},
-	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-		"id": 11
-	},
-	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-		"id": 12
-	},
-	{
-		"title": "Escuadra",
-		"price": 123.45,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-		"id": 13
-	},
-	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-		"id": 14
-	},
-	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-		"id": 15
-	},
-	{
-		"title": "Escuadra",
-		"price": 123.45,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-		"id": 16
-	},
-	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-		"id": 17
-	},
-	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-		"id": 18
 	}
 ]

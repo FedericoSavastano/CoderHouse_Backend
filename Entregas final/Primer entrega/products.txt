@@ -1,0 +1,62 @@
+[
+	{
+		"name": "confor",
+		"description": "foor",
+		"code": "yyy",
+		"price": "232",
+		"stock": "33",
+		"thumbnail": "https://l-512.png",
+		"id": 1,
+		"timestamp": 1665520983435
+	},
+	{
+		"name": "edi",
+		"description": "www",
+		"code": "yyy",
+		"price": "232",
+		"stock": "33",
+		"thumbnail": "https://l-512.png",
+		"id": 2,
+		"timestamp": 1665520985869
+	},
+	{
+		"name": "edi",
+		"description": "www",
+		"code": "yyy",
+		"price": "232",
+		"stock": "33",
+		"thumbnail": "https://l-512.png",
+		"id": 3,
+		"timestamp": 1665520986650
+	},
+	{
+		"name": "Federico",
+		"description": "www",
+		"code": "222",
+		"price": "22",
+		"stock": "3",
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-512.png",
+		"id": 4,
+		"timestamp": 1665520987210
+	},
+	{
+		"name": "Federico",
+		"description": "www",
+		"code": "222",
+		"price": "22",
+		"stock": "3",
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-512.png",
+		"id": 5,
+		"timestamp": 1665520989029
+	},
+	{
+		"name": "Federico",
+		"description": "www",
+		"code": "222",
+		"price": "22",
+		"stock": "3",
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-512.png",
+		"id": 6,
+		"timestamp": 1665520989522
+	}
+]
