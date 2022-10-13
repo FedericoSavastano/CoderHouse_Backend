@@ -1,6 +1,6 @@
 import express from 'express';
 import products from './src/products.js';
-import cart from './src/cart.js';
+// import cart from './src/cart.js';
 
 const app = express();
 const {json, urlencoded} = express;
@@ -9,7 +9,7 @@ app.use(urlencoded({extended: true}));
 app.use(express.static('./public'))
 
 app.use('/api/productos', products);
-app.use('/api/carrito', cart);
+// app.use('/api/carrito', cart);
 
 const PORT = process.env.PORT || 8080;
 

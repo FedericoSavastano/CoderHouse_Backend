@@ -1,44 +1,63 @@
-// const fs = require("fs");
 import fs from 'fs';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 class Contenedor {
-    constructor(fileRoute){
-        this.fileRoute = fileRoute;
+    constructor(fileRoute) {
+        this.fileRoute = `${__dirname}/db/${fileRoute}.json`;
     }
 
-    async  #readMyFile() {
+    async #readMyFile() {
         try {
-           if(fs.existsSync(this.fileRoute)) {
-                let fileContent = await fs.promises.readFile(this.fileRoute, 'utf-8');
+            if (fs.existsSync(this.fileRoute)) {
+                let fileContent = await fs.promises.readFile(
+                    this.fileRoute,
+                    'utf-8'
+                );
                 let fileContentParsed = await JSON.parse(fileContent);
                 return fileContentParsed;
-           } else {
-                fs.promises.writeFile(this.fileRoute, JSON.stringify('[]', null, '\t'));
+            } else {
+                fs.promises.writeFile(
+                    this.fileRoute,
+                    JSON.stringify('[]', null, '\t')
+                );
                 return [];
-           }
+            }
         } catch (error) {
             console.log(error);
         }
     }
 
-    async save(obj){
+    async save(obj) {
         try {
             let fileContent = await this.#readMyFile();
-            obj.id = await this.#getLastId() + 1;
+            console.log(fileContent);
+            obj.id = (await this.#getLastId()) + 1;
             obj.timestamp = Date.now();
             await fileContent.push(obj);
-            await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
-            return `your new element is saved under the id : ${obj.id}`;
+            await fs.promises.writeFile(
+                this.fileRoute,
+                JSON.stringify(fileContent, null, '\t')
+            );
+            return {
+                status: 'SUCCESS',
+                response: `your new element is saved under the id : ${obj.id}`,
+            };
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 
     async #getLastId() {
         try {
             let fileContent = await this.#readMyFile();
-            if(fileContent[0].id) {
-                let lastId = await fileContent.at(-1).id; 
+            if (fileContent[0].id) {
+                let lastId = await fileContent.at(-1).id;
                 return lastId;
             } else {
                 return Number(0);
@@ -48,126 +67,207 @@ class Contenedor {
         }
     }
 
-    async getById(num){
-       try {
-            let contentSelected ;
+    async getById(num) {
+        try {
+            let contentSelected;
             let fileContent = await this.#readMyFile();
-            await fileContent.forEach(content => {if(content.id === num) contentSelected = content});
-            return contentSelected ? contentSelected : `There is no item with the id ${num}`;
+            await fileContent.forEach((content) => {
+                if (content.id === num) contentSelected = content;
+            });
+            return contentSelected
+                ? {
+                      status: 'SUCCESS',
+                      response: `Item with the id ${num}`,
+                      element: contentSelected,
+                  }
+                : {
+                      status: 'WARNING',
+                      response: `There is no item with the id ${num}`,
+                  };
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 
-    async getAll(){
+    async getAll() {
         try {
             let fileContent = await this.#readMyFile();
             return fileContent;
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 
-    async editById(num, obj){
+    async editById(num, obj) {
         try {
             let contentSelected;
             let fileContent = await this.#readMyFile();
-            await fileContent.forEach(content => {if(content.id === num) contentSelected = content});
-             if (contentSelected) {
-                let indexOfProductSelected = fileContent.indexOf(contentSelected);
-             
-                for (const property in obj){
-                    if(fileContent[indexOfProductSelected].hasOwnProperty(property))
-                    {
-                        fileContent[indexOfProductSelected][property] =  obj[property]
+            await fileContent.forEach((content) => {
+                if (content.id === num) contentSelected = content;
+            });
+            if (contentSelected) {
+                let indexOfProductSelected =
+                    fileContent.indexOf(contentSelected);
+
+                for (const property in obj) {
+                    if (
+                        fileContent[indexOfProductSelected].hasOwnProperty(
+                            property
+                        )
+                    ) {
+                        fileContent[indexOfProductSelected][property] =
+                            obj[property];
                     }
                 }
 
-                await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
-                return `you edited the element under the id : ${num}`;
+                await fs.promises.writeFile(
+                    this.fileRoute,
+                    JSON.stringify(fileContent, null, '\t')
+                );
+                return {
+                    status: 'SUCCESS',
+                    response: `You edited the element under the id : ${num}`,
+                };
             } else {
-                return `the element with id : ${num} could not be edited because it was not in the file`;
+                return {
+                    status: 'WARNING',
+                    response: `The element with id : ${num} could not be edited because it was not in the file`,
+                };
             }
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 
-    async deleteById(num){
+    async addToElement(num, obj) {
         try {
             let contentSelected;
             let fileContent = await this.#readMyFile();
-            await fileContent.forEach(content => {if(content.id === num) contentSelected = content});
+            await fileContent.forEach((content) => {
+                if (content.id === num) contentSelected = content;
+            });
             if (contentSelected) {
-                await fileContent.splice(fileContent.indexOf(contentSelected), 1);
-                await fs.promises.writeFile(this.fileRoute, JSON.stringify(fileContent, null, '\t'));
-                return `you deleted the element under the id : ${num}`;
+                let indexOfElementSelected =
+                    fileContent.indexOf(contentSelected);
+
+                for (const property in obj) {
+                    fileContent[indexOfElementSelected][property] =
+                        obj[property];
+                }
+
+                await fs.promises.writeFile(
+                    this.fileRoute,
+                    JSON.stringify(fileContent, null, '\t')
+                );
+                return {
+                    status: 'SUCCESS',
+                    response: `You edited the element under the id : ${num}`,
+                };
             } else {
-                return `the element with id : ${num} could not be deleted because it was not in the file`;
+                return {
+                    status: 'WARNING',
+                    response: `The element with id : ${num} could not be edited because it was not in the file`,
+                };
             }
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 
-    async deleteAll(){
+    async deleteById(num) {
         try {
-            if (fs.existsSync(this.fileRoute)) {
-                await fs.promises.unlink(this.fileRoute);
-                return "File was deleted"
+            let contentSelected;
+            let fileContent = await this.#readMyFile();
+            await fileContent.forEach((content) => {
+                if (content.id === num) contentSelected = content;
+            });
+            if (contentSelected) {
+                await fileContent.splice(
+                    fileContent.indexOf(contentSelected),
+                    1
+                );
+                await fs.promises.writeFile(
+                    this.fileRoute,
+                    JSON.stringify(fileContent, null, '\t')
+                );
+                return {
+                    status: 'SUCCESS',
+                    response: `You deleted the element under the id : ${num}`,
+                };
             } else {
-                return "File does not exist";
+                return {
+                    status: 'WARNING',
+                    response: `The element with id : ${num} could not be deleted because it was not in the file`,
+                };
             }
         } catch (error) {
             console.log(error);
+            return { status: 'ERROR', response: error };
+        }
+    }
+
+    async deleteByIdProduct(numCart, numProd) {
+        try {
+            let contentSelected;
+            let cartSelected;
+            let indexOfCartSelected;
+            let fileContent = await this.#readMyFile();
+
+            await fileContent.forEach((content) => {
+                if (content.id === numCart) contentSelected = content;
+            });
+            if (contentSelected && contentSelected.products) {
+                cartSelected = contentSelected;
+
+                indexOfCartSelected = fileContent.indexOf(contentSelected);
+
+                await contentSelected.products.forEach((prods) => {
+                    if (prods.id === numProd) contentSelected = prods;
+                });
+
+                await fileContent[indexOfCartSelected].products.splice(
+                    fileContent[indexOfCartSelected].products.indexOf(
+                        contentSelected
+                    ),
+                    1
+                );
+                await fs.promises.writeFile(
+                    this.fileRoute,
+                    JSON.stringify(fileContent, null, '\t')
+                );
+                return {
+                    status: 'SUCCESS',
+                    response: `You deleted the element under the id : ${numProd}`,
+                };
+            } else {
+                return {
+                    status: 'WARNING',
+                    response: `The element with id : ${numProd} could not be deleted because it was not in the file`,
+                };
+            }
+        } catch (error) {
+            console.log(error);
+            return { status: 'ERROR', response: error };
+        }
+    }
+
+    async deleteAll() {
+        try {
+            if (fs.existsSync(this.fileRoute)) {
+                await fs.promises.unlink(this.fileRoute);
+                return { status: 'SUCCESS', response: 'File was deleted' };
+            } else {
+                return { status: 'WARNING', response: 'File does not exist' };
+            }
+        } catch (error) {
+            console.log(error);
+            return { status: 'ERROR', response: error };
         }
     }
 }
 
-
-
-const productList = [
-    {
-      "title": "Escuadra",
-      "price": 123.45,
-      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    },
-    {
-      "title": "Calculadora",
-      "price": 234.56,
-      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-    },
-    {
-      "title": "Globo Terráqueo",
-      "price": 345.67,
-      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-    }
-   ]
-
-
-   const fileRoute = "./productos.txt"
-   const myFile = new Contenedor(fileRoute);
-
-
-
-   async function loadProducts () {
-    try{
-        for (const product of productList) {
-            await myFile.save(product);
-        }
-    } catch(err) {
-        console.log(err)
-    }
-  }
-   
-  
-    // loadProducts();
-    
-    export {Contenedor, fileRoute, loadProducts}
-
- 
-
-
-
-
- 
+export { Contenedor };
