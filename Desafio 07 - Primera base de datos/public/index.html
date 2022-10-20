@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 6 Websockets</title>
+    <!-- CSS only -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous' />
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div style="background-color: rgb(229, 230, 173); margin: 2.5% 10%;">
+        <h1>Add Product</h1>
+        <hr>
+
+        <form onsubmit="return addProduct(this)" style="margin: 2% ;">
+            <div class='form-group'>
+                <label for='title'>Title</label>
+                <input type='text' name='title' id='title' class='form-control' />
+            </div>
+            <div class='form-group'>
+                <label for='price'>Price</label>
+                <input type='number' name='price' id='price' class='form-control' />
+            </div>
+            <div class='form-group'>
+                <label for='thumbnail'>Thumbnail</label>
+                <input type='text' name='thumbnail' id='thumbnail' class='form-control' />
+            </div>
+            <br />
+            <button type='submit' class='btn btn-success'>Save</button>
+        </form>
+        <br>
+
+
+        <br>
+    </div>
+
+    <div style="background-color: rgb(173, 230, 204); margin: 2.5% 10%;">
+        <h1>Product List</h1>
+        <hr>
+        <div id="products" style="margin: 2% ;"></div>
+        <br><br>
+
+    </div>
+    <div style="background-color: lightblue; margin: 2.5% 10%;">
+        <h1>Web Chat</h1>
+        <hr>
+
+        <form onsubmit="return addMessage(this)" style="margin: 2% ;">
+            <div class='form-group'></div>
+            <label for="author">Name</label>
+            <input type="text" name="author" id="author" placeholder="Enter name" class='form-control'>
+
+            <br>
+            <div id="messages"></div>
+            <br><br>
+            <div class='form-group'></div>
+            <label for="text">Message</label>
+            <input type="text" name="text" id="text" placeholder="Enter text" class='form-control'>
+
+            <br>
+
+            <button type="submit" class='btn btn-success'>Enviar</button>
+
+        </form>
+        <br><br>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
