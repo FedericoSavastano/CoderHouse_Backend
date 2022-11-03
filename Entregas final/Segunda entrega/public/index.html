@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <div>
+        <h1>List Products</h1>
+        <form action="/api/products" method="get">
+            <input type="submit" value="List Products">
+        </form>
+    </div>
+    <div>
+        <h1>Save Product</h1>
+        <form action="/api/productos" method="post">
+            <label for="name">name</label>
+            <input type="text" name="name" id="name">
+            <label for="description">description</label>
+            <input type="text" name="description" id="description">
+            <label for="code">code</label>
+            <input type="text" name="code" id="code">
+            <label for="price">Price</label>
+            <input type="text" name="price" id="price">
+            <label for="stock">stock</label>
+            <input type="text" name="stock" id="stock">
+            <label for="thumbnail">Thumbnail</label>
+            <input type="text" name="thumbnail" id="thumbnail">
+            <input type="submit" value="save">
+        </form>
+
+        <!-- <h1>edit Product</h1>
+        <form action="/api/productos/1" method="put">
+            <label for="name">name</label>
+            <input type="text" name="name" id="name">
+            <label for="description">description</label>
+            <input type="text" name="description" id="description">
+            <label for="code">code</label>
+            <input type="text" name="code" id="code">
+            <label for="price">Price</label>
+            <input type="text" name="price" id="price">
+            <label for="stock">stock</label>
+            <input type="text" name="stock" id="stock">
+            <label for="thumbnail">Thumbnail</label>
+            <input type="text" name="thumbnail" id="thumbnail">
+            <input type="submit" value="save">
+        </form> -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "6357fb519e40951cd275939b"
+  },
+  "text": "Hola",
+  "author": "Fede"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd275939c"
+  },
+  "text": "Hola, como estas?",
+  "author": "Juan"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd275939d"
+  },
+  "text": "Todo bien y vos?",
+  "author": "Fede"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd275939e"
+  },
+  "text": "Bien, todo bien",
+  "author": "Juan"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd275939f"
+  },
+  "text": "Como anda el laburo?",
+  "author": "Fede"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd27593a0"
+  },
+  "text": "Re bien, me dieron un aumento",
+  "author": "Juan"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd27593a1"
+  },
+  "text": "me alegro mucho! te lo mereces",
+  "author": "Fede"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd27593a2"
+  },
+  "text": "bueno muchas gracias",
+  "author": "Juan"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd27593a3"
+  },
+  "text": "me tengo que ir, hablamos despues",
+  "author": "Fede"
+},{
+  "_id": {
+    "$oid": "6357fb519e40951cd27593a4"
+  },
+  "text": "Dale, nos vemos despues, chau!",
+  "author": "Juan"
+}]

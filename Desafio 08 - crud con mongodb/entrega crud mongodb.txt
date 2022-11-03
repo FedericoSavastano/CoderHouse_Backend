@@ -1,0 +1,336 @@
+show dbs
+admin     40.00 KiB
+config    72.00 KiB
+empresa  144.00 KiB
+local     72.00 KiB
+
+
+///  Utilizando Mongo Shell, crear una base de datos llamada ecommerce que contenga dos colecciones: mensajes y productos. ////
+
+use ecommerce
+'switched to db ecommerce'
+db.createCollection("mensajes")
+{ ok: 1 }
+db.createCollection("productos")
+{ ok: 1 }
+
+
+///// Agregar 10 documentos con valores distintos a las colecciones mensajes y productos. El formato de los documentos debe estar en correspondencia con el que venimos utilizando en el entregable con base de datos MariaDB.   ////
+//// Definir las claves de los documentos en relación a los campos de las tablas de esa base. En el caso de los productos, poner valores al campo precio entre los 100 y 5000 pesos(eligiendo valores intermedios, ej: 120, 580, 900, 1280, 1700, 2300, 2860, 3350, 4320, 4990).  ////
+
+
+db.productos.insertMany([{
+    title: "gorra",
+    price: 500, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/hat-1024.png"
+},
+{
+    title: "malla",
+    price: 2800, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/bikini-1024.png"
+},
+{
+    title: "lentes de sol",
+    price: 3400, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/eyeglasses-1024.png"
+},
+{
+    title: "antiparras",
+    price: 4500, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/swimming_goggles-1024.png"
+},
+{
+    title: "helado",
+    price: 200, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/ice_cream-1024.png"
+},
+{
+    title: "patas de rana",
+    price: 4200, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/snorkling-1024.png"
+},
+{
+    title: "sombrero",
+    price: 600, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/beach_hat-1024.png"
+},
+{
+    title: "canasta",
+    price: 3860, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/basket-1024.png"
+},
+{
+    title: "tabla de surf",
+    price: 4680, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/surfing-1024.png"
+},
+{
+    title: "ancla",
+    price: 2740, 
+    thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/anchor-1024.png"
+},
+]
+)
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6357f9e19e40951cd2759391"),
+     '1': ObjectId("6357f9e19e40951cd2759392"),
+     '2': ObjectId("6357f9e19e40951cd2759393"),
+     '3': ObjectId("6357f9e19e40951cd2759394"),
+     '4': ObjectId("6357f9e19e40951cd2759395"),
+     '5': ObjectId("6357f9e19e40951cd2759396"),
+     '6': ObjectId("6357f9e19e40951cd2759397"),
+     '7': ObjectId("6357f9e19e40951cd2759398"),
+     '8': ObjectId("6357f9e19e40951cd2759399"),
+     '9': ObjectId("6357f9e19e40951cd275939a") } }
+db.mensajes.insertMany([
+    {text: "Hola",
+    author: "Fede"},
+    {text: "Hola, como estas?",
+    author: "Juan"},
+    {text: "Todo bien y vos?",
+    author: "Fede"},
+    {text: "Bien, todo bien",
+    author: "Juan"},
+    {text: "Como anda el laburo?",
+    author: "Fede"},
+    {text: "Re bien, me dieron un aumento",
+    author: "Juan"},
+    {text: "me alegro mucho! te lo mereces",
+    author: "Fede"},
+    {text: "bueno muchas gracias",
+    author: "Juan"},
+    {text: "me tengo que ir, hablamos despues",
+    author: "Fede"},
+    {text: "Dale, nos vemos despues, chau!",
+    author: "Juan"}
+])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6357fb519e40951cd275939b"),
+     '1': ObjectId("6357fb519e40951cd275939c"),
+     '2': ObjectId("6357fb519e40951cd275939d"),
+     '3': ObjectId("6357fb519e40951cd275939e"),
+     '4': ObjectId("6357fb519e40951cd275939f"),
+     '5': ObjectId("6357fb519e40951cd27593a0"),
+     '6': ObjectId("6357fb519e40951cd27593a1"),
+     '7': ObjectId("6357fb519e40951cd27593a2"),
+     '8': ObjectId("6357fb519e40951cd27593a3"),
+     '9': ObjectId("6357fb519e40951cd27593a4") } }
+
+
+
+////// Listar todos los documentos en cada colección. /////
+
+
+db.productos.find().pretty()
+{ _id: ObjectId("6357f9e19e40951cd2759391"),
+  title: 'gorra',
+  price: 500,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/hat-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759392"),
+  title: 'malla',
+  price: 2800,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/bikini-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759393"),
+  title: 'lentes de sol',
+  price: 3400,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/eyeglasses-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759394"),
+  title: 'antiparras',
+  price: 4500,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/swimming_goggles-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759395"),
+  title: 'helado',
+  price: 200,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/ice_cream-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759396"),
+  title: 'patas de rana',
+  price: 4200,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/snorkling-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759397"),
+  title: 'sombrero',
+  price: 600,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/beach_hat-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759398"),
+  title: 'canasta',
+  price: 3860,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/basket-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759399"),
+  title: 'tabla de surf',
+  price: 4680,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/surfing-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd275939a"),
+  title: 'ancla',
+  price: 2740,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/anchor-1024.png' }
+
+
+db.mensajes.find().pretty()
+{ _id: ObjectId("6357fb519e40951cd275939b"),
+  text: 'Hola',
+  author: 'Fede' }
+{ _id: ObjectId("6357fb519e40951cd275939c"),
+  text: 'Hola, como estas?',
+  author: 'Juan' }
+{ _id: ObjectId("6357fb519e40951cd275939d"),
+  text: 'Todo bien y vos?',
+  author: 'Fede' }
+{ _id: ObjectId("6357fb519e40951cd275939e"),
+  text: 'Bien, todo bien',
+  author: 'Juan' }
+{ _id: ObjectId("6357fb519e40951cd275939f"),
+  text: 'Como anda el laburo?',
+  author: 'Fede' }
+{ _id: ObjectId("6357fb519e40951cd27593a0"),
+  text: 'Re bien, me dieron un aumento',
+  author: 'Juan' }
+{ _id: ObjectId("6357fb519e40951cd27593a1"),
+  text: 'me alegro mucho! te lo mereces',
+  author: 'Fede' }
+{ _id: ObjectId("6357fb519e40951cd27593a2"),
+  text: 'bueno muchas gracias',
+  author: 'Juan' }
+{ _id: ObjectId("6357fb519e40951cd27593a3"),
+  text: 'me tengo que ir, hablamos despues',
+  author: 'Fede' }
+{ _id: ObjectId("6357fb519e40951cd27593a4"),
+  text: 'Dale, nos vemos despues, chau!',
+  author: 'Juan' }
+
+
+///// Mostrar la cantidad de documentos almacenados en cada una de ellas. ////
+
+db.productos.estimatedDocumentCount()
+10
+db.mensajes.estimatedDocumentCount()
+10
+
+
+
+//// Realizar un CRUD sobre la colección de productos:
+//// Agregar un producto más en la colección de productos 
+
+db.productos.insertOne({title: "salvavidas", price: 2900, thumbnail: "https://cdn1.iconfinder.com/data/icons/summer-123/512/buoy-1024.png"})
+{ acknowledged: true,
+  insertedId: ObjectId("6357fd209e40951cd27593a5") }
+
+
+//// Realizar una consulta por nombre de producto específico:
+//// Listar los productos con precio menor a 1000 pesos.
+
+db.productos.find({"price": {$lte: 1000}})
+{ _id: ObjectId("6357f9e19e40951cd2759391"),
+  title: 'gorra',
+  price: 500,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/hat-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759395"),
+  title: 'helado',
+  price: 200,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/ice_cream-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759397"),
+  title: 'sombrero',
+  price: 600,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/beach_hat-1024.png' }
+
+
+
+//// Listar los productos con precio entre los 1000 a 3000 pesos.
+
+db.productos.find({$and:[{"price":{$gte:1000}},{"price":{$lte:3000}}]})
+{ _id: ObjectId("6357f9e19e40951cd2759392"),
+  title: 'malla',
+  price: 2800,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/bikini-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd275939a"),
+  title: 'ancla',
+  price: 2740,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/anchor-1024.png' }
+{ _id: ObjectId("6357fd209e40951cd27593a5"),
+  title: 'salvavidas',
+  price: 2900,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/buoy-1024.png' }
+
+
+//// Listar los productos con precio mayor a 3000 pesos.
+
+db.productos.find({"price": {$gte: 3000}})
+{ _id: ObjectId("6357f9e19e40951cd2759393"),
+  title: 'lentes de sol',
+  price: 3400,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/eyeglasses-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759394"),
+  title: 'antiparras',
+  price: 4500,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/swimming_goggles-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759396"),
+  title: 'patas de rana',
+  price: 4200,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/snorkling-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759398"),
+  title: 'canasta',
+  price: 3860,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/basket-1024.png' }
+{ _id: ObjectId("6357f9e19e40951cd2759399"),
+  title: 'tabla de surf',
+  price: 4680,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/surfing-1024.png' }
+
+
+//// Realizar una consulta que traiga sólo el nombre del tercer producto más barato.
+
+db.productos.find({}).sort({"price": 1}).skip(2).limit(1)
+{ _id: ObjectId("6357f9e19e40951cd2759397"),
+  title: 'sombrero',
+  price: 600,
+  thumbnail: 'https://cdn1.iconfinder.com/data/icons/summer-123/512/beach_hat-1024.png' }
+
+
+////Hacer una actualización sobre todos los productos, agregando el campo stock a todos ellos con un valor de 100.
+db.productos.updateMany({}, {$set:{"stock": 100}})
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 10,
+  upsertedCount: 0 }
+
+////Cambiar el stock a cero de los productos con precios mayores a 4000 pesos. 
+db.productos.updateMany({"price": {$gte: 4000}}, {$set:{"stock": 0}})
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0 }
+
+
+//// Borrar los productos con precio menor a 1000 pesos 
+db.productos.deleteMany({"price": {$lte: 1000}})
+{ acknowledged: true, deletedCount: 3 }
+
+
+
+//// Crear un usuario 'pepe' clave: 'asd456' que sólo pueda leer la base de datos ecommerce. Verificar que pepe no pueda cambiar la información.
+use admin
+'switched to db admin'
+db.createUser(
+  {
+    user: "pepe",
+    pwd: "asd456",
+    roles: [
+       { role: "read", db: "ecommerce" }
+    ]
+  }
+)
+{ ok: 1 }
+db.createUser({user:"myUserAdmin", pwd: "abc123", roles:[{role: "userAdminAnyDatabase", db: "admin"}, "readWriteAnyDatabase"]})
+{ ok: 1 }
+
+luego de cerrar la conexion y volver a levantar con
+mongod --auth
+
+y usando user y pass en la conexion de mongo db compass, entrando como "pepe":
+
+use ecommerce
+'switched to db ecommerce'
+db.productos.insertOne({title: "prod pepe"})
+MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { title: "prod pepe", _id: ObjectId('63581f60795297ccc5ff1d15') } ], ordered: true, lsid: { id: UUID("f63b42a9-d610-4c4e-ab4c-5a8243cf4435") }, $db: "ecommerce" }

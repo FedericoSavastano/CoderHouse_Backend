@@ -1,0 +1,18 @@
+[
+	{
+		"id": 1,
+		"timestamp": 1665667984190,
+		"products": [
+			{
+				"name": "eeeee",
+				"description": "foor",
+				"code": "yyy",
+				"price": "232",
+				"stock": "33",
+				"thumbnail": "https://l-512.png",
+				"id": 6,
+				"timestamp": 1665600050459
+			}
+		]
+	}
+]
